@@ -1,0 +1,13 @@
+# Ignore all files and folders inside the root directory
+/*
+
+# But do not ignore .gitignore itself and README.md if needed
+!.gitignore
+!README.md
+
+# Optional: allow specific project folders (remove `!` if you want them ignored too)
+#!project_folder_name/
+
+# Optional: allow only the root-level pubspec.yaml if you have one
+#!pubspec.yaml
+
