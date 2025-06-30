@@ -11,7 +11,7 @@
 #!project_folder_name/
 #!tourisme_reusewidget/
 !01_reusablewidget/
-#!tourisme_app/
+!tourisme_app/
 
 # Optional: allow only the root-level pubspec.yaml if you have one
 #!pubspec.yaml
