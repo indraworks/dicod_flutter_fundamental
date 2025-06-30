@@ -10,7 +10,7 @@
 # Optional: allow specific project folders (remove `!` if you want them ignored too)
 #!project_folder_name/
 #!tourisme_reusewidget/
-01_reusablewidget/
+!01_reusablewidget/
 #!tourisme_app/
 
 # Optional: allow only the root-level pubspec.yaml if you have one
