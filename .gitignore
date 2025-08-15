@@ -1,11 +1,9 @@
-# ===== OS / Editor junk =====
 .DS_Store
 Thumbs.db
 .idea/
 .vscode/
 *.iml
 
-# ===== Flutter / Dart =====
 **/.dart_tool/
 .packages
 .pub-cache/
@@ -13,7 +11,6 @@ Thumbs.db
 .flutter-plugins-dependencies
 .melos_tool/
 
-# ===== Build & intermediates (semua platform) =====
 **/build/
 **/.gradle/
 **/.cxx/
@@ -25,13 +22,11 @@ Thumbs.db
 **/Pods/
 **/.symlinks/
 
-# ===== Binaries =====
 *.apk
 *.aab
 *.ipa
 *.dSYM.zip
 
-# ===== Android local config =====
 **/local.properties
 **/*.keystore
 **/*.jks
