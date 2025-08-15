@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:provider_counter/main_simpan.dart';
 
-//class CounterNotifier
+/// 1) MODEL/STATE
+/// Kelas Counter ini menyimpan nilai _count dan metode untuk mengubahnya.
+/// Ia mewarisi ChangeNotifier, sehingga bisa memberi tahu UI ketika data berubah.
 class CounterNotifier extends ChangeNotifier {
   int _count = 0;
 
-  //getter
   int get count => _count;
 
-  //tambah nilai lalu beritahu pendengar/listener agar widget re-bui;d
+  /// Tambah nilai lalu beri tahu pendengar (UI) agar rebuild.
   void increment() {
     _count++;
     notifyListeners();
   }
 
-  //reset ke nol sbgai akis reaksi yg lain
+  /// Reset ke nol sebagai contoh aksi lain.
   void reset() {
     _count = 0;
     notifyListeners();
@@ -24,6 +24,9 @@ class CounterNotifier extends ChangeNotifier {
 
 void main() {
   runApp(
+    /// 2) REGISTER PROVIDER DI ROOT
+    /// ChangeNotifierProvider membuat instance CounterNotifier dan
+    /// menaruhnya di atas widget tree sehingga bisa diakses lewat context.
     ChangeNotifierProvider(
       create: (_) => CounterNotifier(),
       child: const MyApp(),
@@ -31,7 +34,7 @@ void main() {
   );
 }
 
-//MyAPp dengan STL
+/// Akar aplikasi (tidak perlu tahu detail state).
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -44,21 +47,23 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-//MyAPp utk materialnya stlanya panggil MyHomePage utk halaman page
-//dimana myHomePage sbuah layar screen yg stless widget
-//returnnya scafold karena 1 layar screen saja!
 
+/// Halaman utama (UI) yang menampilkan nilai counter dan tombol aksi.
 class MyHomePage extends StatelessWidget {
   const MyHomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    //buat variable count yg ambil nilai _count yg increment lewat getter di CounterNotifier Class!
+    /// 3) MENDENGARKAN STATE
+    /// Ada beberapa cara. Di bawah ini contoh memakai context.watch<T>()
+    /// untuk mengambil nilai count dan membuat widget rebuild saat berubah.
     final count = context.watch<CounterNotifier>().count;
+
     return Scaffold(
-      appBar: AppBar(title: const Text('Flutter Default + Provider')),
+      appBar: AppBar(title: const Text('Flutter Default Counter + Provider')),
       body: Center(
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
             const Text(
               'Kamu telah menekan tombol sebanyak:',
@@ -66,18 +71,11 @@ class MyHomePage extends StatelessWidget {
             ),
 
             /// Teks ini akan rebuild ketika count berubah karena kita pakai watch.
-            /// jadi count ini di munculkan berubah stiap saat dan berubah ini karena pakai cotext.watch<>().count
-            ///
             Text('$count', style: Theme.of(context).textTheme.displayMedium),
             const SizedBox(height: 24),
 
             /// 4) CONSUMER SEBAGAI ALTERNATIF
             /// Consumer memberi builder yang hanya rebuild bagian ini saat state berubah.
-            /// coiunter pada arg itu hanya nama object yg bertype dari class CounterNotifer
-            /// ukt context dia type dari BuildContext
-            /// utk child dia type dari Widget? jadi
-            /// yg tampil disini adalah wiget Text diaman akan berisi Genap atau Ganjil stlah
-            /// tahu isi dari count!
             Consumer<CounterNotifier>(
               builder: (context, counter, child) {
                 return Text(
@@ -110,6 +108,9 @@ class MyHomePage extends StatelessWidget {
           ],
         ),
       ),
+
+      /// 6) AKSI MENGGUNAKAN read()
+      /// Di event handler seperti onPressed, gunakan read() agar tidak memicu rebuild.
       floatingActionButton: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
