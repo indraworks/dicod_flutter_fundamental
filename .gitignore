@@ -1,19 +1,37 @@
-# Ignore all files and folders inside the root directory
-/*
+# ===== OS / Editor junk =====
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.iml
 
-# But do not ignore .gitignore itself and README.md if needed
-!.gitignore
-!README.md
+# ===== Flutter / Dart =====
+**/.dart_tool/
+.packages
+.pub-cache/
+.flutter-plugins
+.flutter-plugins-dependencies
+.melos_tool/
 
+# ===== Build & intermediates (semua platform) =====
+**/build/
+**/.gradle/
+**/.cxx/
+**/.cmake/
+**/intermediates/
+**/outputs/
+**/DerivedData/
+**/Flutter/ephemeral/
+**/Pods/
+**/.symlinks/
 
+# ===== Binaries =====
+*.apk
+*.aab
+*.ipa
+*.dSYM.zip
 
-# Optional: allow specific project folders (remove `!` if you want them ignored too)
-#!project_folder_name/
-#!tourisme_reusewidget/
-!01_reusablewidget/
-!tourisme_app/
-!03_recycle_app
-!05_navigation
-# Optional: allow only the root-level pubspec.yaml if you have one
-#!pubspec.yaml
-
+# ===== Android local config =====
+**/local.properties
+**/*.keystore
+**/*.jks
