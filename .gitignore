@@ -12,7 +12,8 @@
 #!tourisme_reusewidget/
 !01_reusablewidget/
 !tourisme_app/
-
+!03_recycle_app
+!05_navigation
 # Optional: allow only the root-level pubspec.yaml if you have one
 #!pubspec.yaml
 
