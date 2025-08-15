@@ -1,3 +1,49 @@
+# Flutter & Dart
+.dart_tool/
+.packages
+.pub-cache/
+.melos_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+
+# Builds & intermediates
+build/
+**/build/
+**/.gradle/
+**/.cxx/
+**/.cmake/
+**/outputs/
+**/intermediates/
+**/.idea/
+**/.vscode/
+**/*.iml
+
+# Android
+**/local.properties
+**/*.keystore
+**/*.jks
+
+# iOS/macOS
+**/Pods/
+**/.symlinks/
+**/Flutter/ephemeral/
+**/DerivedData/
+
+# Web
+.dart_tool/
+
+# Binaries
+*.apk
+*.aab
+*.ipa
+*.dSYM.zip
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+
+
 # Miscellaneous
 *.class
 *.log

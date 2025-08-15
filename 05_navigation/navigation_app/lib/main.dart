@@ -18,3 +18,11 @@ class MainApp extends StatelessWidget {
     );
   }
 }
+
+/*
+jika kita udah ada screen maka utk home mengarah pada homeScreen kita yg awal 
+screen awal mula screen ktika app launch !
+
+
+
+*/

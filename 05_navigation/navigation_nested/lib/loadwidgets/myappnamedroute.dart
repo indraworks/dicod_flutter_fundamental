@@ -25,8 +25,9 @@ class Myappnamedroute extends StatelessWidget {
         if (settings.name == '/third') {
           final args = settings.arguments as Map<String, String>;
           return MaterialPageRoute(
-            //check jika namenya undeifed atau null maka otomatis hasil
-            //yg ditampilkan adalah Guest
+            //disini adalah :
+            //Jika args['named'] ada, maka digunakan —
+            //dan nilai default constructor = 'indra' akan diabaikan.
             builder: (context) => Screen3(name: args['name'] ?? 'Guest'),
           );
         }
@@ -34,3 +35,21 @@ class Myappnamedroute extends StatelessWidget {
     );
   }
 }
+
+/*
+✅ Jawaban Singkat:
+Default value pada constructor (this.name = 'indra') hanya akan digunakan jika TIDAK ADA nilai yang dikirim ke parameter itu.
+Namun dalam kasusmu, kamu memang mengirim argumen secara eksplisit dengan name: null, maka default tidak akan dipakai.
+
+🧠 Penjelasan Lebih Dalam:
+Coba perhatikan kode onGenerateRoute-mu sebelumnya:
+
+dart
+Copy
+Edit
+final args = settings.arguments as Map<String, String>;
+builder: (context) => Screen3(name: args['named'] ?? 'Guest'),
+
+
+
+*/
